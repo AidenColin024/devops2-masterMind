@@ -1,15 +1,28 @@
+
+
+
 #!/bin/python3
-# MasterMind – Kleurenversie zonder backdoor
-# Bestand: master_Mind.py
+# MasterMind – Kleurenversie zonder backdoor + admin-check
+# Bestand: mastermind.py
 
 import random
+import os
 
-COLORS = ['R', 'G', 'B', 'Y', 'P', 'O']
+COLORS = {
+    'R': 'red',
+    'G': 'green',
+    'B': 'blue',
+    'Y': 'yellow',
+    'P': 'purple',
+    'O': 'orange'
+}
+
 MAX_ATTEMPTS = 10
 CODE_LENGTH = 4
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "admin123")  # Nu met environment variable ondersteuning
 
 def generate_code():
-    return [random.choice(COLORS) for _ in range(CODE_LENGTH)]
+    return [random.choice(list(COLORS.keys())) for _ in range(CODE_LENGTH)]
 
 def get_feedback(secret, guess):
     black_pegs = sum(s == g for s, g in zip(secret, guess))
@@ -26,36 +39,57 @@ def get_feedback(secret, guess):
 
     return black_pegs, white_pegs
 
+def admin_check():
+    pw = input("Admin login vereist om de geheime code te zien. Voer wachtwoord in: ").strip()
+    return pw == ADMIN_PASSWORD
+
 def play_mastermind():
-    print("🎮 Welkom bij Mastermind – Kleurenversie!")
+    print("Welkom bij Mastermind – Kleurenversie!")
     print("Raad de geheime combinatie van 4 kleuren.")
-    print("Kleuren: R (rood), G (groen), B (blauw), Y (geel), P (paars), O (oranje)")
-    print("Voorbeeld invoer: RGBY")
+    print("Beschikbare kleuren:")
+    for code, name in COLORS.items():
+        print(f" {code} = {name}")
 
     secret_code = generate_code()
 
+    if input("Ben je een admin en wil je de geheime code bekijken? (y/n): ").lower().strip() == "y":
+        if admin_check():
+            print(f"Geheime code (alleen voor admin): {''.join(secret_code)}")
+        else:
+            print("Onjuist wachtwoord. Ga verder als speler.")
+
     for attempt in range(1, MAX_ATTEMPTS + 1):
-        guess = ""
         valid_guess = False
+        guess = ""
+
         while not valid_guess:
-            guess = input(f"Poging {attempt}: ").upper().strip()
+            guess_input = input(f"Poging {attempt}: Voer 4 kleuren in (bijv. RGYB of 'red green blue yellow'): ").lower().strip()
+
+            # Ondersteun zowel afkortingen als volledige woorden
+            parts = guess_input.replace(",", " ").split()
+            if len(parts) == 1 and len(parts[0]) == CODE_LENGTH:
+                # Bijvoorbeeld: 'rgby'
+                guess = [c.upper() for c in parts[0] if c.upper() in COLORS]
+            else:
+                # Bijvoorbeeld: 'red blue green yellow'
+                reverse_map = {v: k for k, v in COLORS.items()}
+                guess = [reverse_map.get(word.lower(), "") for word in parts]
+
             valid_guess = len(guess) == CODE_LENGTH and all(c in COLORS for c in guess)
             if not valid_guess:
-                print(f"❌ Ongeldige invoer. Gebruik precies {CODE_LENGTH} kleurenletters, zoals RGBY.")
+                print("Ongeldige invoer. Gebruik 4 bekende kleuren of afkortingen. Probeer opnieuw.")
 
         black, white = get_feedback(secret_code, guess)
-        print(f"✔️ Black pegs (juiste kleur + plek): {black}, White pegs (juiste kleur, verkeerde plek): {white}")
+        print(f"Black pegs (juiste kleur + plek): {black}, White pegs (juiste kleur, verkeerde plek): {white}")
 
         if black == CODE_LENGTH:
-            print(f"🎉 Gefeliciteerd! Je hebt het goed geraden: {''.join(secret_code)}")
+            print(f"Gefeliciteerd! Je hebt het goed geraden: {''.join(secret_code)}")
             return
 
-    print(f"🔚 Helaas, je hebt het niet geraden. De juiste code was: {''.join(secret_code)}")
+    print(f"Helaas, je hebt het niet geraden. De juiste code was: {''.join(secret_code)}")
 
 if __name__ == "__main__":
     again = 'Y'
-    while again == 'Y':
+    while again.upper() == 'Y':
         play_mastermind()
         again = input("Opnieuw spelen (Y/N)? ").upper()
-
-

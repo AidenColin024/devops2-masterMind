@@ -1,4 +1,53 @@
-* ab1c477 Create Dockerfile
-* c8f320b Create master_Mind.py
-* 7308edd Update README.md
-* 12cc29e Initial commit
+✅ Testrapport 1 – Case-insensitive invoer & feedback
+Datum: 19-06-2025
+Geteste versie: v1.0-case-insensitive
+
+📋 Testgevallen:
+Testcase	Verwacht Resultaat	Werkelijk Resultaat	Geslaagd
+1. Invoer ‘rgbp’	Wordt herkend als geldige invoer (case-insensitive)	✅	Ja
+2. Invoer ‘RgBp’	Wordt herkend als geldige invoer	✅	Ja
+3. Feedback klopt bij juiste gok	Black en white pegs correct teruggegeven	✅	Ja
+4. Feedback klopt bij verkeerde plek	White pegs correct teruggegeven	✅	Ja
+5. Ongeldige invoer (‘RGXK’)	Geeft foutmelding en vraagt opnieuw om invoer	❌ Soms geen foutmelding, invoer wordt geaccepteerd	Nee
+
+❗ Probleem bij testcase 5:
+Bij bepaalde ongeldige invoer wordt geen foutmelding getoond en accepteert het programma de invoer toch.
+
+🔧 Verbetering:
+Verbeter de validatie van de invoer zodat alle ongeldige invoer altijd leidt tot een foutmelding en nieuwe invoerpoging.
+
+
+
+
+✅ Testrapport 2 – Beveiliging & admin-check (conceptueel)
+Datum: 19-06-2025
+Geteste versie: v1.0-no-admin-check
+
+📋 Testgevallen:
+Testcase	Verwacht Resultaat	Werkelijk Resultaat	Geslaagd
+1. Backdoor is niet aanwezig	Geen ongeautoriseerde toegang tot oplossing	✅	Ja
+2. Admin-check via wachtwoord aanwezig	Alleen admin kan oplossing zien	❌ Admin-check is nog niet geïmplementeerd	Nee
+3. Oplossing is alleen zichtbaar voor admin	Oplossing wordt niet getoond aan normale spelers	❌ Oplossing wordt altijd getoond bij verlies	Nee
+
+❗ Problemen:
+Admin-check ontbreekt volledig, waardoor iedereen bij verlies de oplossing kan zien.
+
+🔧 Verbeteringen:
+Voeg een admin-check toe via bijvoorbeeld een wachtwoord of environment flag. Toon de oplossing alleen aan admin-gebruikers.
+
+
+
+
+
+✅ Testrapport 3 – Max attempts & spelafsluiting
+Datum: 19-06-2025
+Geteste versie: v1.0-max-attempts
+
+📋 Testgevallen:
+Testcase	Verwacht Resultaat	Werkelijk Resultaat	Geslaagd
+1. Spel eindigt na juist raden	Spel toont winstbericht en stopt	✅	Ja
+2. Spel eindigt na 10 pogingen	Spel toont verliesbericht en stopt	✅	Ja
+3. Spel vraagt om input na max pogingen	Programma stopt netjes en vraagt geen extra input	✅	Ja
+
+Conclusie:
+Max aantal pogingen wordt correct gehandhaafd en het spel sluit netjes af.

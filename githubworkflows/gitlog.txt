@@ -1,0 +1,10 @@
+ Create Dockerfile
+Create master_Mind.py
+ Update README.md
+ Create branch met test-rapport
+Create branch met gitlog en backlog
+ (feature/user-auth) Voeg gebruikersauthenticatie toe
+ Implementeer kleurvalidatie
+ Setup projectstructuur en initial commit
+Aleks commit zijn master_mind code
+

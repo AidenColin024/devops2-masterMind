@@ -1,0 +1,49 @@
+De test:
+
+Run flake8 master_Mind.py
+master_Mind.py:3:1: E402 module level import not at top of file
+master_Mind.py:6:80: E501 line too long (101 > 79 characters)
+master_Mind.py:9:1: E302 expected 2 blank lines, found 1
+master_Mind.py:13:1: E302 expected 2 blank lines, found 1
+master_Mind.py:25:80: E501 line too long (91 > 79 characters)
+master_Mind.py:28:1: E302 expected 2 blank lines, found 1
+master_Mind.py:34:1: E302 expected 2 blank lines, found 1
+master_Mind.py:38:1: E302 expected 2 blank lines, found 1
+master_Mind.py:40:80: E501 line too long (88 > 79 characters)
+master_Mind.py:56:80: E501 line too long (114 > 79 characters)
+master_Mind.py:58:80: E501 line too long (105 > 79 characters)
+master_Mind.py:61:80: E501 line too long (94 > 79 characters)
+master_Mind.py:67:80: E501 line too long (85 > 79 characters)
+master_Mind.py:69:1: E305 expected 2 blank lines after class or function definition, found 1
+Error: Process completed with exit code 1.
+
+Conclusie uit de test: Er werd een algemene fout gevonden waardoor hij zegt procces completed with exit code 1.
+Verder werkt de code goed er zijn ook veel lange regels code gevonden en een aantal wit regels, maar niets dat de code verstoort. kortom: de code is af en klaar om gebruikt te worden.
+
+Test 2:
+
+Run flake8 master_Mind.py
+master_Mind.py:4:1: E303 too many blank lines (3)
+master_Mind.py:4:1: E265 block comment should start with '# '
+master_Mind.py:22:80: E501 line too long (101 > 79 characters)
+master_Mind.py:24:1: E302 expected 2 blank lines, found 1
+master_Mind.py:27:1: E302 expected 2 blank lines, found 1
+master_Mind.py:29:1: W293 blank line contains whitespace
+master_Mind.py:38:80: E501 line too long (96 > 79 characters)
+master_Mind.py:42:1: E302 expected 2 blank lines, found 1
+master_Mind.py:43:80: E501 line too long (94 > 79 characters)
+master_Mind.py:46:1: E302 expected 2 blank lines, found 1
+master_Mind.py:55:80: E501 line too long (100 > 79 characters)
+master_Mind.py:66:80: E501 line too long (129 > 79 characters)
+master_Mind.py:78:80: E501 line too long (87 > 79 characters)
+master_Mind.py:80:80: E501 line too long (101 > 79 characters)
+master_Mind.py:83:80: E501 line too long (111 > 79 characters)
+master_Mind.py:86:80: E501 line too long (85 > 79 characters)
+master_Mind.py:89:80: E501 line too long (90 > 79 characters)
+master_Mind.py:91:1: E305 expected 2 blank lines after class or function definition, found 1
+Error: Process completed with exit code 1.
+
+
+Conclusie:
+
+Zelfde resultaat als bij test 2. Er is nogsteeds niks fout dat de code niet werkt, dus de code is nogsteeds goed.

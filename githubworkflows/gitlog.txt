@@ -1,4 +1,10 @@
-* ab1c477 Create Dockerfile
-* c8f320b Create master_Mind.py
-* 7308edd Update README.md
-* 12cc29e Initial commit
+ Create Dockerfile
+Create master_Mind.py
+ Update README.md
+ Create branch met test-rapport
+Create branch met gitlog en backlog
+ (feature/user-auth) Voeg gebruikersauthenticatie toe
+ Implementeer kleurvalidatie
+ Setup projectstructuur en initial commit
+Aleks commit zijn master_mind code
+

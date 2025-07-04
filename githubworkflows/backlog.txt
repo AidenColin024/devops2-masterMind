@@ -1,4 +1,20 @@
-* ab1c477 Create Dockerfile
-* c8f320b Create master_Mind.py
-* 7308edd Update README.md
-* 12cc29e Initial commit
+
+US1 - Feedback blijft werken bij woorden (zoals bij cijfers)
+
+Als speler wil ik feedback krijgen over juiste en onjuiste woorden, net zoals bij cijfers, zodat het spel eerlijk blijft werken.
+
+US2 - Invoer moet case-insensitive zijn
+
+Als speler wil ik dat het niet uitmaakt of ik “Red” of “red” invoer, zodat ik makkelijker kan spelen zonder fouten door hoofdletters.
+
+US3 - Beveilig backdoor toegang
+
+Als ontwikkelaar wil ik dat er geen onveilige backdoor-code in het spel zit, zodat het spel niet gemanipuleerd kan worden.
+
+US4 - Introduceer eenvoudige admin-check
+
+Als admin wil ik mij kunnen identificeren met een wachtwoord of environment flag, zodat ik toegang heb tot beheerdersfunctionaliteiten.
+
+US5 - Alleen admin-gebruikers kunnen oplossing zien
+
+Als speler wil ik dat alleen admin-gebruikers de oplossing kunnen zien, zodat het spel eerlijk blijft voor gewone spelers.
